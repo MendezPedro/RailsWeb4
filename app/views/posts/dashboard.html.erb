@@ -1,0 +1,45 @@
+<h1 class="py-4">Posts</h1>
+<form action="/posts/create" method="POST" class="py-4 px-4">
+    <%= token_tag %>
+    <div class="form-group">
+        Name: <input name="name" type="text"><br>
+        Description: <input name="description" type="text"><br>
+        init_date: <input name="init_date" type="text"><br>
+        end_date: <input name="end_date" type="text">
+    </div>
+    <select name="status">
+        <option value=""></option>
+        <option value="propuesta">Propuesta</option>
+        <option value="en_progreso">En progreso</option>
+        <option value="terminado">Terminado</option>
+    </select>
+    <input type="submit" value="crear Post">
+</form>
+<br><br><br>
+<form> 
+    <select name="status">
+        <option value="0">Propuesta</option>
+        <option value="1">En progreso</option>
+        <option value="2">Terminado</option>
+    </select>
+    <button type="submit"> Busqueda </button>
+</form>
+<br><br><br>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>init_date</th>
+        <th>end_date</th>
+    </tr>
+    <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.name %></td>
+            <td><%= post.status %></td>
+            <td><%= post.description %></td>
+            <td><%= post.init_date %></td>
+            <td><%= post.end_date %></td>
+        </tr>
+    <% end %>
+</table>

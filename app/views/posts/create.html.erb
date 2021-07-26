@@ -1,0 +1,16 @@
+<% if @post.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@post.errors.count, "error") %>
+        No se puede crear, faltan los siguientes datos:
+        </h2>
+        <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% else %>
+    <h1>Post ingresado con éxito</h1>
+<% end  %>
+<li><%= link_to 'Volver', root_path %></li>
